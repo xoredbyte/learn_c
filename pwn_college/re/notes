@@ -1,0 +1,14 @@
+
+// C pre processor
+
+cpp hello.c -o hello_pre_processed.c           // handles includes, expands macros and removes comments 
+
+
+gcc -S -masm=intel hello_pre_processed.c                 // assembly code
+output: hello_pre_processed.s               
+
+gcc hello.c -o hello
+
+objdump -d hello
+
+gcc -g hello.c -o hello  // retains eveythings 
