@@ -1,2 +1,69 @@
+Tl,dr;
+
+Printf with %s:
+
+%s expects a pointer to first element of character array and it prints till Null character
+
+char s[20]="DEAD BEEF"
+
+print("%s",s);  // this works because  s is char array, usage of s in a statement decays it to pointer of first of element of the char array i.e &s[0]
+print("%s",&s[0]); // also correct
+print("%s",&s); // not correct
+
+Pointers and Arrays:
+any array interger or character array 
+1. int i[10] or char s[10] , when array name used in an expression , it decays down to pointer to first element. 
+that means , it should be read and taken as pointers.
+
+2. For multi dimension, it still holds good. that mean int i[2][10], or char s[2][10] . when array names i and s are used, they decays down to pointer to first element.
+heres the catch , first element here is 1-D array, another array. 
+ex: i[0] is of type 1-D array of size 10, 
+
+that means i in expression , points to first element of 2-D array i.e i[0] which of type 1-D integer array with size 10
+
+hence to point i[2][10]; pointer should be of type
+int (*p)[10];
+p=i ; is valid
+
+
+Pointer to pointer array:
+
+argv is , is an array of character pointers . i.e arg[0],arg[1] are pointers to character array 
+
+
+
+
+
+
+
+In expressions, an array decays to a pointer to its first element
+
 gcc -Wall -Wextra -std=c23 -pedantic foo.c
 
+char, char *, char **
+
+
+array name ≠ pointer variable
+
+Array name decays to pointer in expressions   " Array to pointer decay"
+
+String needs space for '\0'
+
+%p → cast to (void *)
+
+char s1[][N] → N must fit the largest string
+
+
+char **s2="abc def"; it is wrong, 
+since in c array decays to pointer when used in expressions "abc def" is a character array , hence it decays to pointer not pointer to pointer
+
+
+char *s2="dead beef"      //s2 is a local pointer it is stored on stack , "dead beef" stores in readonly section, immutable
+
+char s1[]="dead beef"      //"dead beef" stored on stack or .data if global, s1 stored on stack
+
+
+
+char **s usecases
+
+argv[] is array of 
